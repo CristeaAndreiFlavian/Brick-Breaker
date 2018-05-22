@@ -15,6 +15,17 @@ public class Bricks extends Rectangle {
 			}
 		}
 	}
+	
+	public boolean colliding() {
+		for (int x = 0; x < bricks.length; x++) {
+			for (int y = 0; y < bricks[0].length; y++) {
+				if (Main.ball.getX() > (x * 50) && Main.ball.getX() < (x * 50) + 50 && Main.ball.getY() > (y * 20) && Main.ball.getY() < (y * 20) + 20) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	public void paint(Graphics g, Window src) {
 		for (int x = 0; x < bricks.length; x++) {
@@ -25,7 +36,7 @@ public class Bricks extends Rectangle {
 				}
 			}
 		}
-		if (this.isColliding(Main.ball)) {
+		if (this.colliding()) {
 			int bx = Main.ball.getX() / 50;
 			int by = Main.ball.getY() / 10 - 1;
 			try {
